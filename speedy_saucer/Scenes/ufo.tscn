@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cfrnjv6a00brp" path="res://Assets/ufoGreen.png" id="1_u0ru7"]
 
 [node name="UFO" type="RigidBody2D"]
+position = Vector2(355, 225)
+gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_u0ru7")
