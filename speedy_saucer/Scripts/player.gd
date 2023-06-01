@@ -1,9 +1,4 @@
 extends RigidBody2D
 
-
 func _ready():
-	_test()
-
-func _test():
-	var my_int = 2 ** 10
-	print(my_int)
+	apply_impulse(Vector2(20,5))
