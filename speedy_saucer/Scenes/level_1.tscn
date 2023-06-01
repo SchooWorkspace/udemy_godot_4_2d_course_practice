@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnar5svpqghqj"]
+[gd_scene load_steps=8 format=3 uid="uid://bnar5svpqghqj"]
 
 [ext_resource type="Texture2D" uid="uid://06aor2v2op1j" path="res://Assets/purple.png" id="1_6ljhc"]
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_6mvba"]
 [ext_resource type="PackedScene" uid="uid://b5tux6ep17kf3" path="res://Scenes/player.tscn" id="2_y4rgs"]
 [ext_resource type="PackedScene" uid="uid://dsmpt4n11kx4u" path="res://Scenes/Maze.tscn" id="4_ongw3"]
+[ext_resource type="FontFile" uid="uid://carv7myfqt7kb" path="res://Assets/Maplestory Bold.ttf" id="5_aavxs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_568y1"]
+font = ExtResource("5_aavxs")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_sobv8"]
+font = ExtResource("5_aavxs")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_6mvba")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
 z_index = -100
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -19,5 +30,41 @@ stretch_mode = 1
 position = Vector2(600, 100)
 
 [node name="Maze" parent="." instance=ExtResource("4_ongw3")]
-z_index = -1
+z_index = -50
 position = Vector2(604, 78)
+
+[node name="StartLabel" type="Label" parent="."]
+z_index = -25
+offset_left = 565.0
+offset_top = 11.0
+offset_right = 651.0
+offset_bottom = 59.0
+text = "시작"
+label_settings = SubResource("LabelSettings_568y1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RuleLabel" type="Label" parent="."]
+z_index = -25
+offset_left = 323.0
+offset_top = 34.0
+offset_right = 501.0
+offset_bottom = 78.0
+text = "길에서 벗어 나지 않고 
+도착지점 까지 완주하면 성공"
+label_settings = SubResource("LabelSettings_sobv8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndLabel" type="Label" parent="."]
+z_index = -25
+offset_left = 654.0
+offset_top = -391.0
+offset_right = 740.0
+offset_bottom = -343.0
+text = "도착"
+label_settings = SubResource("LabelSettings_568y1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_exited" from="Maze" to="." method="_on_maze_body_exited"]
