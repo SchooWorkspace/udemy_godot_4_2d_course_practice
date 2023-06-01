@@ -21,8 +21,11 @@ layer = -10
 
 [node name="Background" type="TextureRect" parent="CanvasLayer"]
 z_index = -100
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_6ljhc")
 stretch_mode = 1
 
@@ -46,10 +49,10 @@ vertical_alignment = 1
 
 [node name="RuleLabel" type="Label" parent="."]
 z_index = -25
-offset_left = 323.0
-offset_top = 34.0
-offset_right = 501.0
-offset_bottom = 78.0
+offset_left = 328.0
+offset_top = 71.0
+offset_right = 506.0
+offset_bottom = 115.0
 text = "길에서 벗어 나지 않고 
 도착지점 까지 완주하면 성공"
 label_settings = SubResource("LabelSettings_sobv8")
