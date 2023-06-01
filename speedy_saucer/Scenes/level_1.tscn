@@ -11,8 +11,6 @@ offset_bottom = 648.0
 texture = ExtResource("1_6ljhc")
 stretch_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("2_y4rgs")]
-position = Vector2(296, 313)
+[node name="ParentPlayer" parent="." instance=ExtResource("2_y4rgs")]
 
-[node name="Player2" parent="." instance=ExtResource("2_y4rgs")]
-position = Vector2(889, 332)
+[node name="ChildPlayer" parent="ParentPlayer" instance=ExtResource("2_y4rgs")]
