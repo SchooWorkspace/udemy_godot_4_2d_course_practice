@@ -1,13 +1,10 @@
 [gd_scene load_steps=31 format=3 uid="uid://cjxc7ovm2n758"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_xkhub"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_0hp2w"]
 [ext_resource type="Texture2D" uid="uid://dckwnnuyljjqf" path="res://assets/textures/player/Idle (32x32).png" id="2_rgo0n"]
 [ext_resource type="Texture2D" uid="uid://5m5grvvlv15o" path="res://assets/textures/player/Fall (32x32).png" id="2_yss3o"]
 [ext_resource type="Texture2D" uid="uid://bmivkdkfus74e" path="res://assets/textures/player/Run (32x32).png" id="3_lfntb"]
 [ext_resource type="Texture2D" uid="uid://bc100lc8ciaey" path="res://assets/textures/player/Jump (32x32).png" id="4_v0txr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf288"]
-size = Vector2(16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u2i3t"]
 atlas = ExtResource("2_rgo0n")
@@ -199,15 +196,18 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_xkhub")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf288"]
+size = Vector2(16, 24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_jf288")
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0hp2w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_8klpl")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_jf288")

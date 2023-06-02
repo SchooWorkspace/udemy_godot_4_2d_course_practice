@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
+@export var gravity = 500
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var animated_sprite = $AnimatedSprite2D
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	velocity.y += 500 * delta
+	
+	move_and_slide()
