@@ -15,3 +15,9 @@ func _physics_process(delta):
 
 func _on_screen_exited():
 	queue_free()
+
+
+func _on_area_entered(area):
+	#if (area.get_name() == "Enemy"):
+	area.die()
+	queue_free()
