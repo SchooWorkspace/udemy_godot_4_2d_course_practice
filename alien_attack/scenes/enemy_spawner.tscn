@@ -6,7 +6,6 @@
 script = ExtResource("1_wf6w1")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
 
 [node name="SpawnPositions" type="Node2D" parent="."]
