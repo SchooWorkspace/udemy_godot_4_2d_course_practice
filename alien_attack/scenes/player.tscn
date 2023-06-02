@@ -17,3 +17,5 @@ texture = ExtResource("1_px1ey")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_mks1p")
+
+[node name="RocketContainer" type="Node" parent="."]
