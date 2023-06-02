@@ -6,6 +6,8 @@ var score = 0
 @onready var player = $Player
 @onready var hud = $UI/HUD
 
+var game_over_scene = preload("res://scenes/game_over_screen.tscn")
+
 func _ready():
 	hud.set_score_label(score)
 	hud.set_lives(lives)
@@ -16,11 +18,18 @@ func _on_player_took_damage():
 	if(lives < 1):
 		print("Game Over")
 		player.die()
-	print(lives)
+		
+		await get_tree().create_timer(1.5).timeout
+		
+		var game_over_scene_instantiation = game_over_scene.instantiate()
+		$UI.add_child(game_over_scene_instantiation)
+		game_over_scene_instantiation.set_score(score)
+
 
 func _on_enemy_spawner_enemy_spawned(enemy_intance):
 	enemy_intance.connect("died", _on_enemy_died)
 	add_child(enemy_intance)
+
 
 func _on_enemy_died():
 	score += 100
