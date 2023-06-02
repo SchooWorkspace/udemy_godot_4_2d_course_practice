@@ -8,9 +8,11 @@ var score = 0
 
 func _ready():
 	hud.set_score_label(score)
+	hud.set_lives(lives)
 
 func _on_player_took_damage():
 	lives -= 1
+	hud.set_lives(lives)
 	if(lives < 1):
 		print("Game Over")
 		player.die()
@@ -23,3 +25,4 @@ func _on_enemy_spawner_enemy_spawned(enemy_intance):
 func _on_enemy_died():
 	score += 100
 	hud.set_score_label(score)
+
