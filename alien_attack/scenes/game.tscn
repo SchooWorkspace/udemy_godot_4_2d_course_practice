@@ -17,4 +17,3 @@ position = Vector2(155, 380)
 
 [node name="Rocket" parent="." instance=ExtResource("3_7rxdx")]
 position = Vector2(279, 379)
-speed = 5
