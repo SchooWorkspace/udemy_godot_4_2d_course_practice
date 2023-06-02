@@ -48,8 +48,7 @@ position = Vector2(202, 73)
 position = Vector2(276, 132)
 
 [node name="SpikeBall" parent="Traps" instance=ExtResource("6_s1ji8")]
-light_mask = 1
-position = Vector2(122, 118)
+position = Vector2(119, 91)
 
 [node name="Objects" type="Node2D" parent="."]
 
