@@ -1,10 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckf1m752cd745"]
+[gd_scene load_steps=10 format=3 uid="uid://ckf1m752cd745"]
 
 [ext_resource type="Texture2D" uid="uid://bky38av4047ve" path="res://assets/textures/player_ship.png" id="1_px1ey"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xu3nx"]
+[ext_resource type="AudioStream" uid="uid://d3gfnlhpo3pw3" path="res://assets/audio/sfx_laser2.wav" id="3_b2s3h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mks1p"]
 radius = 30.0
+
+[sub_resource type="Gradient" id="Gradient_3av4w"]
+offsets = PackedFloat32Array(0, 0.511111, 1)
+colors = PackedColorArray(1, 0.921569, 0.231373, 0, 1, 0.501961, 0.14902, 1, 1, 0.101961, 0.0705882, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_imi8q"]
+gradient = SubResource("Gradient_3av4w")
+
+[sub_resource type="Curve" id="Curve_xtby5"]
+_data = [Vector2(0, 0.609091), 0.0, 0.0, 0, 0, Vector2(0.981928, 0.0272727), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iqwp5"]
+curve = SubResource("Curve_xtby5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r4x50"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(1, 10, 1)
+particle_flag_disable_z = true
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = -200.0
+initial_velocity_max = -200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_iqwp5")
+color_ramp = SubResource("GradientTexture1D_imi8q")
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -20,3 +51,12 @@ position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_mks1p")
 
 [node name="RocketContainer" type="Node" parent="."]
+
+[node name="PlayerShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b2s3h")
+
+[node name="FlameParticleEffect" type="GPUParticles2D" parent="."]
+position = Vector2(-31, 0)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_r4x50")
+lifetime = 0.5
