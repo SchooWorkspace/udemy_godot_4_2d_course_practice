@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvq1srpby2in8"]
+[gd_scene load_steps=11 format=3 uid="uid://bvq1srpby2in8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_yvr57"]
 [ext_resource type="PackedScene" uid="uid://cjxc7ovm2n758" path="res://scenes/player.tscn" id="2_pqfur"]
@@ -7,12 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://bsl6lwrwymv76" path="res://scenes/jump_pad.tscn" id="5_jchpg"]
 [ext_resource type="PackedScene" uid="uid://b1kcss6p280r3" path="res://scenes/saw.tscn" id="6_rfnxj"]
 [ext_resource type="PackedScene" uid="uid://c7arwfqdvhaob" path="res://scenes/spike_ball.tscn" id="6_s1ji8"]
+[ext_resource type="PackedScene" uid="uid://deygqt51rxhdt" path="res://scenes/tile_map.tscn" id="8_itqx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k47tr"]
 size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w34h"]
-size = Vector2(532, 20)
+size = Vector2(1264, 20)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_yvr57")
@@ -22,7 +23,7 @@ position = Vector2(225, 85)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 z_index = -1
-position = Vector2(230, 214)
+position = Vector2(-288, 208)
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
@@ -40,19 +41,22 @@ script = ExtResource("4_umr3a")
 shape = SubResource("RectangleShape2D_6w34h")
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(202, 73)
+position = Vector2(226, 41)
 
 [node name="Traps" type="Node2D" parent="."]
 
 [node name="Saw" parent="Traps" instance=ExtResource("6_rfnxj")]
-position = Vector2(276, 132)
+position = Vector2(373, 108)
 
 [node name="SpikeBall" parent="Traps" instance=ExtResource("6_s1ji8")]
-position = Vector2(119, 91)
+position = Vector2(19, 110)
 
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="JumpPad" parent="Objects" instance=ExtResource("5_jchpg")]
-position = Vector2(177, 150)
+position = Vector2(153, 128)
+
+[node name="TileMap" parent="." instance=ExtResource("8_itqx1")]
+layer_0/tile_data = PackedInt32Array(655360, 393216, 2, 655361, 458752, 2, 655362, 458752, 2, 655363, 458752, 2, 655364, 458752, 2, 655365, 458752, 2, 655366, 458752, 2, 655367, 458752, 2, 655368, 458752, 2, 655369, 458752, 2, 655370, 458752, 2, 655371, 458752, 2, 655372, 458752, 2, 655373, 458752, 2, 655374, 458752, 2, 655375, 458752, 2, 655376, 458752, 2, 655377, 458752, 2, 655378, 458752, 2, 655379, 458752, 2, 655380, 458752, 2, 655381, 458752, 2, 655382, 458752, 2, 655383, 458752, 2, 655384, 458752, 2, 655385, 458752, 2, 655386, 458752, 2, 655387, 458752, 2, 655388, 524288, 2, 524288, 393216, 0, 589824, 393216, 1, 524289, 458752, 0, 589825, 458752, 1, 524290, 458752, 0, 589826, 458752, 1, 524291, 458752, 0, 589827, 458752, 1, 524292, 458752, 0, 589828, 458752, 1, 524293, 458752, 0, 589829, 458752, 1, 524294, 458752, 0, 589830, 458752, 1, 524295, 458752, 0, 589831, 458752, 1, 524296, 458752, 0, 589832, 458752, 1, 524297, 458752, 0, 589833, 458752, 1, 524298, 458752, 0, 589834, 458752, 1, 524299, 458752, 0, 589835, 458752, 1, 524300, 458752, 0, 589836, 458752, 1, 524301, 458752, 0, 589837, 458752, 1, 524302, 458752, 0, 589838, 458752, 1, 524303, 458752, 0, 589839, 458752, 1, 524304, 458752, 0, 589840, 458752, 1, 524305, 458752, 0, 589841, 458752, 1, 524306, 458752, 0, 589842, 458752, 1, 524307, 458752, 0, 589843, 458752, 1, 524308, 458752, 0, 589844, 458752, 1, 524309, 458752, 0, 589845, 458752, 1, 524310, 458752, 0, 589846, 458752, 1, 524311, 458752, 0, 589847, 458752, 1, 524312, 458752, 0, 589848, 458752, 1, 524313, 458752, 0, 589849, 458752, 1, 524314, 458752, 0, 589850, 458752, 1, 524315, 458752, 0, 589851, 458752, 1, 524316, 524288, 0, 589852, 524288, 1, 327685, 1114112, 1, 327686, 1179648, 1, 327687, 1245184, 1, 196608, 1114112, 1, 196609, 1179648, 1, 196610, 1245184, 1, 131068, 1114112, 1, 131069, 1179648, 1, 131070, 1245184, 1, -65534, 1114112, 1, -65533, 1179648, 1, -65532, 1245184, 1, -131064, 1114112, 1, -131063, 1179648, 1, -131062, 1245184, 1)
 
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
