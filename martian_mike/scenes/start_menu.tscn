@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://jrwhemb5vggu"]
+
+[ext_resource type="FontFile" uid="uid://bybty64pjj0ju" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_1nbok"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_f5weg"]
+[ext_resource type="PackedScene" uid="uid://d4dfnaoqkf04w" path="res://scenes/background.tscn" id="1_nr7bh"]
+[ext_resource type="Texture2D" uid="uid://csd3my1drkpig" path="res://assets/textures/bg/Gray.png" id="2_lkrcf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j3f6a"]
+font = ExtResource("1_1nbok")
+font_size = 46
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0.337255, 0.67451, 1)
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5weg")
+
+[node name="StartMenuLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -74.0
+offset_right = 134.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The Game"
+label_settings = SubResource("LabelSettings_j3f6a")
+
+[node name="Background" parent="." instance=ExtResource("1_nr7bh")]
+bg_texture = ExtResource("2_lkrcf")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = 15.0
+offset_right = 72.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_1nbok")
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = 65.0
+offset_right = 38.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_1nbok")
+text = "qUIT
+"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,31 +1,29 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvq1srpby2in8"]
+[gd_scene load_steps=16 format=3 uid="uid://bvq1srpby2in8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_yvr57"]
 [ext_resource type="PackedScene" uid="uid://d4dfnaoqkf04w" path="res://scenes/background.tscn" id="2_2a2w3"]
+[ext_resource type="PackedScene" uid="uid://cpfm67oqc5qk2" path="res://scenes/level_2.tscn" id="2_a05fd"]
 [ext_resource type="PackedScene" uid="uid://cjxc7ovm2n758" path="res://scenes/player.tscn" id="2_pqfur"]
 [ext_resource type="Texture2D" uid="uid://brbjwnr3fpw0l" path="res://icon.svg" id="3_2knm8"]
 [ext_resource type="Texture2D" uid="uid://dlk832irr5t0r" path="res://assets/textures/bg/Brown.png" id="3_a3j76"]
-[ext_resource type="Script" path="res://scripts/death_zone.gd" id="4_umr3a"]
 [ext_resource type="PackedScene" uid="uid://bsl6lwrwymv76" path="res://scenes/jump_pad.tscn" id="5_jchpg"]
+[ext_resource type="PackedScene" uid="uid://iarjtb0mu8p0" path="res://scenes/death_zone.tscn" id="6_gdmqq"]
 [ext_resource type="PackedScene" uid="uid://b1kcss6p280r3" path="res://scenes/saw.tscn" id="6_rfnxj"]
 [ext_resource type="PackedScene" uid="uid://c7arwfqdvhaob" path="res://scenes/spike_ball.tscn" id="6_s1ji8"]
 [ext_resource type="PackedScene" uid="uid://deygqt51rxhdt" path="res://scenes/tile_map.tscn" id="8_itqx1"]
 [ext_resource type="PackedScene" uid="uid://btc4yqrq6e0it" path="res://scenes/start.tscn" id="11_renb8"]
+[ext_resource type="PackedScene" uid="uid://cwcc672sq50xk" path="res://scenes/exit.tscn" id="12_oswco"]
+[ext_resource type="PackedScene" uid="uid://c5jcwhcqxi00p" path="res://scenes/ui_layer.tscn" id="14_p434v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k47tr"]
 size = Vector2(128, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w34h"]
-size = Vector2(1264, 20)
-
 [node name="Level" type="Node2D"]
 script = ExtResource("1_yvr57")
+next_level = ExtResource("2_a05fd")
 
 [node name="Background" parent="." instance=ExtResource("2_2a2w3")]
 bg_texture = ExtResource("3_a3j76")
-
-[node name="Player" parent="." instance=ExtResource("2_pqfur")]
-position = Vector2(201, 83)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 z_index = -1
@@ -38,13 +36,7 @@ texture = ExtResource("3_2knm8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_k47tr")
 
-[node name="DeathZone" type="Area2D" parent="."]
-position = Vector2(233, 330)
-collision_layer = 4
-script = ExtResource("4_umr3a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-shape = SubResource("RectangleShape2D_6w34h")
+[node name="DeathZone" parent="." instance=ExtResource("6_gdmqq")]
 
 [node name="Traps" type="Node2D" parent="."]
 
@@ -69,4 +61,10 @@ layer_0/tile_data = PackedInt32Array(655360, 393216, 2, 655361, 458752, 2, 65536
 [node name="Start" parent="." instance=ExtResource("11_renb8")]
 position = Vector2(190, 128)
 
-[connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
+[node name="Exit" parent="." instance=ExtResource("12_oswco")]
+position = Vector2(310, 128)
+
+[node name="Player" parent="." instance=ExtResource("2_pqfur")]
+position = Vector2(201, 83)
+
+[node name="UILayer" parent="." instance=ExtResource("14_p434v")]
