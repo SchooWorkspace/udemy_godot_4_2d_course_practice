@@ -5,4 +5,4 @@ extends Area2D
 
 
 func animate():
-	animated_sprite.play("idle")
+	animated_sprite.play("idle ")
